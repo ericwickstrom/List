@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>List</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="lib/bootswatch/journal/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body id="yellowish" ng-app="listApp" ng-cloak>
+    
+    <div ng-include="'navbar.html'"></div>
+      
+    <!-- form -->
+    
+    <div class="container-fluid" ng-controller="ListController">
+        <div class="row item-complete">
+            <h1>hello!</h1>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="row">
+                
+                    <label for="orderBy">Order by:</label>
+                    <select id="orderBy" class="drowndown dropdown-toggle" ng-model="sortOrder">
+                        <option value="+text">Ascending</option>
+                        <option value="-text">Descending</option>
+                        <option value="+complete">Remaining</option>
+                        <option value="-complete">Complete</option>
+                    </select>
+                
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Add to list...." ng-model="listItem" required/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="add(listItem)">Add</button>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+
+                <ul class="list-group">
+                
+                    <li class="list-group-item clearfix"  ng-repeat="item in list | orderBy: sortOrder" ng-class="{'item-complete': item.complete}">
+                            {{item.text}}
+                        <span class="pull-right">
+                            <span class="btn btn-xs btn-success" ng-show="!item.complete" ng-click="toggleComplete(item)"><i class="fa fa-check"></i></span>
+                            <span class="btn btn-xs btn-danger" ng-click="remove(item)"><i class="fa fa-times"></i></span>
+                        </span>     
+                    </li>
+                    
+                     
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+     <!-- list -->
+    <!-- scripts -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="js/app.js"></script> 
+</body>
+</html>

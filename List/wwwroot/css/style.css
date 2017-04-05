@@ -1,0 +1,11 @@
+﻿[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.item-complete {
+    background-color: lightslategray;
+}
+
+.btn-success {
+    background-color: yellow;
+}
